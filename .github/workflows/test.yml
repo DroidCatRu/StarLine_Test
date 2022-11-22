@@ -1,0 +1,51 @@
+name: Tests on master branch
+
+on:
+  push:
+    branches:
+      - 'master'
+    paths-ignore:
+      - 'README.md'
+      - '.github/**'
+      - 'renovate.json'
+  pull_request:
+    branches:
+      - 'master'
+    paths-ignore:
+      - 'README.md'
+      - '.github/**'
+      - 'renovate.json'
+
+jobs:
+  test:
+    name: KtLint, detekt and unit-tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup JDK environment
+        uses: actions/setup-java@v3
+        with:
+          java-version: 11
+          distribution: zulu
+          
+      - name: Make gradlew executable
+        run: chmod +x ./gradlew
+        
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Run KtLint
+        run: ./gradlew lintKotlin
+
+      - name: Run Detekt
+        run: ./gradlew detekt
+
+      - name: Run unit tests
+        run: ./gradlew check
+        
+      - name: Build debug
+        run: ./gradlew assembleDebug --stacktrace

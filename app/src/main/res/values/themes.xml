@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.StarLineTest" parent="Theme.Material3.DayNight" />
+
+    <style name="Theme.StarLineTest.AppStarting" parent="Theme.SplashScreen.IconBackground">
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/teal_200</item>
+        <item name="postSplashScreenTheme">@style/Theme.StarLineTest</item>
+    </style>
+</resources>
