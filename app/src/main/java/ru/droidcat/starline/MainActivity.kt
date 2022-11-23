@@ -12,7 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import ru.droidcat.starline.core.ui.DevicePreviews
-import ru.droidcat.starline.ui.theme.StarLineTheme
+import ru.droidcat.starline..core.ui.theme.StarLineTheme
 import ru.droidcat.starline.R as AppR
 
 class MainActivity : ComponentActivity() {
