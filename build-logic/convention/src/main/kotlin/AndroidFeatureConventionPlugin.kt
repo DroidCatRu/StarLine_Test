@@ -14,7 +14,6 @@ class AndroidFeatureConventionPlugin : Plugin<Project> {
                 apply("starline.android.library")
                 apply("starline.android.hilt")
                 apply("starline.android.detekt")
-                apply("org.jmailen.kotlinter")
             }
             extensions.configure<LibraryExtension> {
                 defaultConfig {

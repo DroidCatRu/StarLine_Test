@@ -1,4 +1,4 @@
-package ru.droidcat.starline.ui.theme
+package ru.droidcat.starline.core.ui.theme
 
 import android.app.Activity
 import android.os.Build

@@ -1,4 +1,4 @@
-package ru.droidcat.starline.ui.theme
+package ru.droidcat.starline.core.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

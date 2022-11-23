@@ -11,7 +11,6 @@ class AndroidTestConventionPlugin : Plugin<Project> {
                 apply("com.android.test")
                 apply("org.jetbrains.kotlin.android")
                 apply("starline.android.detekt")
-                apply("org.jmailen.kotlinter")
             }
 
             extensions.configure<TestExtension> {
