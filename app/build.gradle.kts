@@ -73,6 +73,6 @@ dependencies {
 configurations.configureEach {
     resolutionStrategy {
         force(libs.junit4)
-        force("org.objenesis:objenesis:2.6")
+        force("org.objenesis:objenesis:3.3")
     }
 }
