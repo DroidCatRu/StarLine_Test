@@ -20,6 +20,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 configureKotlinAndroid(this)
                 defaultConfig.targetSdk = 33
                 configureFlavors(this)
+                packagingOptions.resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
             }
             extensions.configure<ApplicationAndroidComponentsExtension> {
                 configurePrintApksTask(this)

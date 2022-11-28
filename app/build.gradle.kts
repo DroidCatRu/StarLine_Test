@@ -19,20 +19,16 @@ android {
     }
 
     buildTypes {
-        val debug by getting {
+        debug {
             applicationIdSuffix = ".debug"
         }
-        val release by getting {
+        release {
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
-    }
-
-    packagingOptions {
-        resources.excludes.add("/META-INF/{AL2.0,LGPL2.1}")
     }
 
     testOptions {
@@ -45,6 +41,11 @@ android {
 dependencies {
 
     implementation(project(":core:ui"))
+    implementation(project(":core:domain"))
+    implementation(project(":core:network"))
+    implementation(project(":core:navigation"))
+
+    implementation(project(":feature:carsonmap"))
 
     androidTestImplementation(libs.androidx.navigation.testing)
     androidTestImplementation(kotlin("test"))
@@ -63,6 +64,8 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.window.manager)
     implementation(libs.androidx.profileinstaller)
+
+    implementation(libs.kotlinx.immutable.collections)
 }
 
 // androidx.test is forcing JUnit, 4.12. This forces it to use 4.13

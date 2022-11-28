@@ -3,39 +3,57 @@ package ru.droidcat.starline
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
-import ru.droidcat.starline.core.ui.DevicePreviews
+import androidx.core.view.WindowCompat
+import androidx.lifecycle.coroutineScope
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.collections.immutable.toImmutableSet
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
+import ru.droidcat.starline.core.domain.NetworkMonitor
+import ru.droidcat.starline.core.navigation.FeatureIntentManager
+import ru.droidcat.starline.core.navigation.NavigationFactory
 import ru.droidcat.starline.core.ui.theme.StarLineTheme
-import ru.droidcat.starline.R as AppR
+import ru.droidcat.starline.ui.StarLineApp
+import javax.inject.Inject
 
+const val DEFAULT_FLOW_TIMEOUT = 5_000L
+
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var networkMonitor: NetworkMonitor
+
+    @Inject
+    lateinit var navigationFactories: @JvmSuppressWildcards Set<NavigationFactory>
+
+    @Inject
+    lateinit var featureIntentManager: FeatureIntentManager
+
     override fun onCreate(savedInstanceState: Bundle?) {
         installSplashScreen()
         super.onCreate(savedInstanceState)
-        setContent {
-            MainScreen()
-        }
-    }
-}
 
-@DevicePreviews
-@Composable
-fun MainScreen() {
-    StarLineTheme {
-        // A surface container using the 'background' color from the theme
-        Surface(
-            modifier = Modifier.fillMaxSize(),
-            color = MaterialTheme.colorScheme.background
-        ) {
-            val appName = stringResource(id = AppR.string.app_name)
-            Text("Hello $appName")
+        WindowCompat.setDecorFitsSystemWindows(window, false)
+
+        val isOffline = networkMonitor.isOnline
+            .map(Boolean::not)
+            .stateIn(
+                scope = lifecycle.coroutineScope,
+                started = SharingStarted.WhileSubscribed(DEFAULT_FLOW_TIMEOUT),
+                initialValue = false
+            )
+
+        setContent {
+            StarLineTheme {
+                StarLineApp(
+                    isOffline = isOffline,
+                    navigationFactories = navigationFactories.toImmutableSet(),
+                    featureIntentManager = featureIntentManager
+                )
+            }
         }
     }
 }

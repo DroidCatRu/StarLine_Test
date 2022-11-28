@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_car_marker_text">Your car</string>
+    <string name="no_vehicle_selected_error">No vehicle selected</string>
+</resources>

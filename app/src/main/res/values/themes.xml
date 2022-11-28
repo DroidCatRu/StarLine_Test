@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Theme.StarLineTest" parent="Theme.Material3.DayNight" />
+    <!-- Allows us to override night specific attributes in the
+         values-night folder. -->
+    <style name="NightAdjusted.Theme.StarlineTest" parent="Theme.Material3.Light.NoActionBar">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+    </style>
 
-    <style name="Theme.StarLineTest.AppStarting" parent="Theme.SplashScreen.IconBackground">
+    <!-- The final app theme -->
+    <style name="Theme.StarLineTest" parent="NightAdjusted.Theme.StarlineTest">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor" tools:targetApi="27">@android:color/transparent</item>
+    </style>
+
+
+    <!-- Allows us to override night specific attributes in the
+         values-night folder. -->
+    <style name="NightAdjusted.Theme.Splash" parent="Theme.SplashScreen.IconBackground">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
+    </style>
+
+    <!-- The final splash screen theme -->
+    <style name="Theme.StarLineTest.Splash" parent="NightAdjusted.Theme.Splash">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor" tools:targetApi="27">@android:color/transparent</item>
+
         <item name="windowSplashScreenAnimatedIcon">@drawable/ic_launcher_foreground</item>
         <item name="windowSplashScreenIconBackgroundColor">@color/teal_200</item>
         <item name="postSplashScreenTheme">@style/Theme.StarLineTest</item>

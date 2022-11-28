@@ -10,6 +10,8 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx)
 
+    api(libs.accompanist.placeholder)
+    api(libs.accompanist.swiperefresh)
     api(libs.android.material)
     api(libs.androidx.compose.foundation)
     api(libs.androidx.compose.foundation.layout)

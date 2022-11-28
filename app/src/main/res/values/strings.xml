@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">StarLine Test</string>
+    <string name="not_connected">No internet connection</string>
+    <string name="go_back">Go back</string>
 </resources>

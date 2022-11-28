@@ -1,6 +1,6 @@
 [versions]
 accompanist                                 = "0.27.1"
-androidDesugarJdkLibs                       = "1.2.0"
+androidDesugarJdkLibs                       = "1.2.2"
 androidGradlePlugin                         = "7.3.1"
 androidMaterial                             = "1.7.0"
 androidxActivity                            = "1.6.1"
@@ -27,8 +27,8 @@ androidxTestRules                           = "1.5.0"
 androidxTracing                             = "1.1.0"
 androidxUiAutomator                         = "2.2.0"
 androidxWork                                = "2.7.1"
-detekt                                      = "1.22.0-RC2"
-detektTwitterCompose                        = "0.0.22"
+detekt                                      = "1.22.0"
+detektTwitterCompose                        = "0.0.26"
 hilt                                        = "2.44.2"
 hiltExt                                     = "1.0.0"
 junit4                                      = "4.13.2"
@@ -36,17 +36,22 @@ kotlin                                      = "1.7.20"
 kotlinxCoroutines                           = "1.6.4"
 kotlinxDatetime                             = "0.4.0"
 kotlinxSerializationJson                    = "1.4.1"
+kotlinxImmutableCollections                 = "0.3.5"
 ksp                                         = "1.7.21-1.0.8"
 ktLint                                      = "3.12.0"
+ktor                                        = "2.1.3"
 retrofit                                    = "2.9.0"
 retrofitKotlinxSerializationJson            = "0.8.0"
 room                                        = "2.5.0-beta02"
 secrets                                     = "2.0.1"
 turbine                                     = "0.12.1"
+yandexMaps                                  = "4.2.2-lite"
 
 [libraries]
 accompanist-flowlayout                      = { group = "com.google.accompanist", name = "accompanist-flowlayout", version.ref = "accompanist" }
 accompanist-systemuicontroller              = { group = "com.google.accompanist", name = "accompanist-systemuicontroller", version.ref = "accompanist" }
+accompanist-placeholder                     = { group = "com.google.accompanist", name = "accompanist-placeholder", version.ref = "accompanist" }
+accompanist-swiperefresh                    = { group = "com.google.accompanist", name = "accompanist-swiperefresh", version.ref = "accompanist" }
 android-desugarJdkLibs                      = { group = "com.android.tools", name = "desugar_jdk_libs", version.ref = "androidDesugarJdkLibs" }
 android-material                            = { module = "com.google.android.material:material", version.ref = "androidMaterial" }
 androidx-activity-compose                   = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
@@ -102,12 +107,14 @@ kotlinx-coroutines-android                  = { group = "org.jetbrains.kotlinx",
 kotlinx-coroutines-test                     = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "kotlinxCoroutines" }
 kotlinx-datetime                            = { group = "org.jetbrains.kotlinx", name = "kotlinx-datetime", version.ref = "kotlinxDatetime" }
 kotlinx-serialization-json                  = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
+kotlinx-immutable-collections               = { group = "org.jetbrains.kotlinx", name = "kotlinx-collections-immutable", version.ref = "kotlinxImmutableCollections"}
 turbine                                     = { group = "app.cash.turbine", name = "turbine", version.ref = "turbine" }
 retrofit-core                               = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-kotlin-serialization               = { group = "com.jakewharton.retrofit", name = "retrofit2-kotlinx-serialization-converter", version.ref = "retrofitKotlinxSerializationJson" }
 room-runtime                                = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-ktx                                    = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-compiler                               = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+yandex-maps                                 = { group = "com.yandex.android", name = "maps.mobile", version.ref = "yandexMaps"}
 
 # Dependencies of the included build-logic
 android-gradlePlugin                        = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
