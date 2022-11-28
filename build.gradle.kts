@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization) apply false
     alias(libs.plugins.secrets) apply false
     alias(libs.plugins.ktLint) apply false
-    id("com.android.library") version "7.3.1" apply false
+    alias(libs.plugins.android.library) apply false
     id("org.jetbrains.kotlin.android") version "1.7.20" apply false
 }
 
